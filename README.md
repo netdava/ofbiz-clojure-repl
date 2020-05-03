@@ -1,13 +1,26 @@
 # Clojure repl component for OFBiz
 
 Uses [jvm-breakglass](https://github.com/matlux/jvm-breakglass) library to start an instance of nRepl inside Apache OFBiz.
-Once that is done, you can do all sorts of nice things there.
+Once we have a Repl inside OFBiz we can connect to it from our favorite cloujure IDE and interact with it.
+
+Some things that can be done:
+
+* Interact with a running OFBiz instance from a shell like environment (Repl is better then the shell)
+* Prototype functionality and experiment with instant feedback - search for Repl driven development videos
+* Develop services for OFBiz in clojure and leverage all it's wonderfull properties
+* Use data visualization tools like [Proto-repl](https://github.com/jasongilman/proto-repl) to explore and do interactive Business Inteligence.
+* Desing reports using real data using something like [Gorilla-repl](http://gorilla-repl.org/)
+
+Watch it on youtube
+
+[![Video of Clojure repl Apache OFBiz ERP](https://img.youtube.com/vi/XXxJDZRzu_E/0.jpg)](https://youtu.be/XXxJDZRzu_E "Clojure repl Apache OFBiz ERP")
+
 
 ## How does it work?
 
 The plugin exposes services that allow a user to start/stop an instance of nRepl inside OFBiz application.
 
-
+You can find the plugin sources at [netdava/ofbiz-clojure-repl](https://github.com/netdava/ofbiz-clojure-repl) .
 
 ## Using this plugin
 
@@ -23,7 +36,7 @@ Once that is done you can start the project.
     # Prepare OFBiz for start - load data
     ./gradlew cleanAll loadAll
     # Run OFBiz. You can look for the plugin in the logs.
-    ./gradlew OFBiz
+    ./gradlew ofbiz
     # Open the link in the browser and start clojure repl manually.
     xdg-open https://localhost:8443/accounting
 ```
