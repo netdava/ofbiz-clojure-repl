@@ -1,8 +1,8 @@
-;; 
-;; Code to run in OfBiz clojure repl
+;;
+;; Code to run in OFBiz clojure repl
 ;; See https://github.com/matlux/jvm-breakglass
-;; For OfBiz service API see https://cwiki.apache.org/confluence/display/OFBIZ/Service+Engine+Guide 
-;; 
+;; For OfBiz service API see https://cwiki.apache.org/confluence/display/OFBIZ/Service+Engine+Guide
+;;
 
 (ns com.netdava.ofbiz.clojure.demo
   (:require [cl-java-introspector.core :as introspector]
@@ -21,8 +21,8 @@
 
 
 (comment
-  
+  ; We can print one service per line. It's a shame we don't have namespaces for service names
   (doseq [service (.getAllServiceNames ofbiz)]
     (println service))
-  
-  )
+
+  0)
