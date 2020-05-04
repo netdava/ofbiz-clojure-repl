@@ -15,6 +15,16 @@ Watch it on youtube
 
 [![Video of Clojure repl Apache OFBiz ERP](https://img.youtube.com/vi/XXxJDZRzu_E/0.jpg)](https://youtu.be/XXxJDZRzu_E "Clojure repl Apache OFBiz ERP")
 
+I believe the OFBiz development experience can look like this:
+
+* https://www.youtube.com/watch?v=ZkJX9ciI5aM&t=1824s
+* https://www.youtube.com/watch?v=Bs44qdAX5yo
+
+## Hire me
+
+I am availble for contracting work via my company.
+I would love to work more with OFBiz in general and with Clojure on OFBiz in particular.
+If you do like this work plese let me know [contact@netdava.com](mailto:contact@netdava.com) .
 
 ## How does it work?
 
