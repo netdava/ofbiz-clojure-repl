@@ -20,9 +20,10 @@ under the License.
 
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
     <property key="Clojure-replApplication">
-        <value xml:lang="en">Clojure-repl Application</value>
-        <value xml:lang="zh">Clojure-repl应用程序</value>
-        <value xml:lang="zh-TW">Clojure-repl應用程式</value>
+        <value xml:lang="en">Clojure-REPL</value>
+        <value xml:lang="en">Clojure-REPL</value>
+        <value xml:lang="zh">Clojure-REPL应用程序</value>
+        <value xml:lang="zh-TW">Clojure-REPL應用程式</value>
     </property>
     <property key="Clojure-replCompanyName">
         <value xml:lang="en">OFBiz: Clojure-repl</value>

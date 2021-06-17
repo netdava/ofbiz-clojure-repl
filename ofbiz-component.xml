@@ -35,7 +35,7 @@ under the License.
     <entity-resource type="data" reader-name="demo" loader="main" location="data/Clojure-replDemoData.xml"/>
 
     <!-- service resources: model(s), eca(s) and group definitions -->
-    <service-resource type="model" loader="main" location="servicedef/services.xml"/>
+    <service-resource type="model" loader="main" location="servicedef/services.xml" />
     <!--
     <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
     <service-resource type="group" loader="main" location="servicedef/groups.xml"/>
@@ -45,9 +45,12 @@ under the License.
 
     <!-- web applications; will be mounted when using the embedded container -->
     <webapp name="clojure-repl"
-        title="Clojure-repl"
+        title="Clojure-REPL"
         server="default-server"
         location="webapp/clojure-repl"
         base-permission="OFBTOOLS,CLOJURE-REPL"
         mount-point="/clojure-repl"/>
+
+    <container name="clojure-REPL" class="com.netdava.ofbiz.clojure.ClojureREPLContainer" loaders="main"/>
+
 </ofbiz-component>

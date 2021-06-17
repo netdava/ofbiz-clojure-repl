@@ -4,21 +4,18 @@
 ;; For OfBiz service API see https://cwiki.apache.org/confluence/display/OFBIZ/Service+Engine+Guide
 ;;
 
-(ns com.netdava.ofbiz.clojure.demo
-  (:require [cl-java-introspector.core :as introspector]
-            [me.raynes.fs :as raynes]))
+;; Usage with Calva:
+;; Calva Connect to generic repl port 7888
+;; Load current file: ctrl+alt+c  Enter
+;; Run forms: move carret on line `(.getAllServis ...` and ctrl+enter
 
-; See what objects we have in the nrepl context
-(introspector/get-objs)
+(ns demo
+  (:import [com.netdava.ofbiz.clojure ClojureREPLService]
+           [org.apache.ofbiz.service DispatchContext]))
 
-; Bind the ofbiz-dispatch context to ofbiz global
-(def ofbiz (introspector/get-obj "ofbiz-dispatch"))
-
-; list all the methods of the ofbiz instance
-(introspector/methods-info ofbiz)
+(def ^DispatchContext ofbiz (.get ClojureREPLService/CONTEXT "ofbiz-dispatch-context"))
 
 (.getAllServiceNames ofbiz)
-
 
 (comment
   ; We can print one service per line. It's a shame we don't have namespaces for service names

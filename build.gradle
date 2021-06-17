@@ -19,7 +19,8 @@
 
 dependencies {
     //Examples of compile-time and runtime dependencies
-    pluginLibsCompile 'net.matlux:jvm-breakglass:0.0.8'
+    pluginLibsCompile 'org.clojure:clojure:1.10.2'
+    pluginLibsCompile 'nrepl:nrepl:0.8.3'
     //pluginLibsCompile 'junit:junit-dep:4.10'
     //pluginLibsRuntime 'junit:junit-dep:4.10'
 }

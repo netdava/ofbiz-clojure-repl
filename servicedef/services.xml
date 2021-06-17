@@ -20,12 +20,12 @@ under the License.
 
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
-  <description>Clojure-repl Services</description>
-  <vendor></vendor>
+  <description>Clojure-REPL Service</description>
+  <vendor>https://netdava.com</vendor>
   <version>1.0</version>
 
   <service name="startRepl" engine="java"
-    location="com.netdava.ofbiz.clojure.ClojureReplService" invoke="startRepl" export="true"
+    location="com.netdava.ofbiz.clojure.ClojureREPLService" invoke="startRepl" export="true"
     max-retry="3" use-transaction="false">
     <description>
       Clojure repl service. Starts the repl to listen to a port
@@ -33,11 +33,12 @@ under the License.
   </service>
 
   <service name="stopRepl" engine="java"
-    location="com.netdava.ofbiz.clojure.ClojureReplService" invoke="stopRepl" export="true"
+    location="com.netdava.ofbiz.clojure.ClojureREPLService" invoke="stopRepl" export="true"
     max-retry="3" use-transaction="false">
     <description>
       Clojure repl service. Controls the repl stops the repl.
     </description>
   </service>
+
 
 </services>
