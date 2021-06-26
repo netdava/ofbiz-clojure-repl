@@ -49,5 +49,6 @@
                         (println "salut"))}
          test {:doc "Test"
                :task (let [services-str (repl/ofbiz-run "localhost" 7888 "(list-services)")
-                           res (first (repl/filter-values (deref repl/queue)))]
+                           q (deref repl/queue)
+                           res (repl/filter-values q)]
                        (println (:value res)))}}}

@@ -47,7 +47,7 @@
 
 (defn ofbiz-run
   [host port expr]
-  (let [ofbiz-ops (file->str "script/ofbiz_ops.clj")]
-    (nrepl-eval host port ofbiz-ops)
+  (let [ofbiz-ops (file->str "script/ofbiz_ops.clj")
+        e (str ofbiz-ops "\n" expr)]
     (reset-queue!)
-    (nrepl-eval host port expr)))
+    (nrepl-eval host port e)))
