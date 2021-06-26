@@ -1,0 +1,53 @@
+{:min-bb-version "0.4.0"
+ :paths ["script"]
+ :deps {cli-matic/cli-matic {:mvn/version "0.4.3"}
+        nrepl/nrepl {:mvn/version "0.8.3"}}
+ :tasks {:requires ([nrepl-client :as repl]
+                    [clojure.string :as str]
+                    [clojure.tools.cli :refer [parse-opts]])
+         :init     (do (def platform-alias
+                         (case (System/getProperty "os.name")
+                           "Linux"
+                           "backend/linux"
+                           "Windows"
+                           "backend/windows"
+                           "Mac OS X"
+                           "backend/macosx"))
+                       (defn eshell
+                         "Print command before executing it in shell."
+                         [& args]
+                         (binding [*out* *err*]
+                           (println args))
+                         (apply shell args))
+                       (def ofbiz-ops-opts [["-p" "--port PORT" "App repl port."
+                                             :default 43851
+                                             :parse-fn (fn [p] (Integer/parseInt p))
+                                             :validate [(fn [p] (< 0 p 0x10000)) "Must be a number between 0 and 65536"]]
+                                            ["-H" "--host HOST" "App host."
+                                             :default "dev8.int.drevidence.com"]
+                                            ["-h" "--help" "Print help information."]])
+                       (defn custom-parse-opts
+                         [cli-args cli-opts]
+                         (let [parsed-opts (parse-opts cli-args cli-opts)
+                               {:keys [summary errors]
+                                {:keys [help]} :options} parsed-opts]
+                            ;;  (println parsed-opts)
+                           (when errors
+                             (println "Allowed options are:\n" summary "\n"
+                                      "Error parsing args:\n" errors "\n"
+                                      "Parsed options are:\n" parsed-opts "\n")
+                             (System/exit 1))
+                           (when help
+                             (println "Allowed options are:\n" summary "\n")
+                             (System/exit 0))
+                           parsed-opts)))
+         ofbiz {:doc "Print hello ofbiz"
+                :task (let [parsed-opts (custom-parse-opts *command-line-args* ofbiz-ops-opts)
+                            {{:keys [env]} :options} parsed-opts
+                            opts {:out (str env "/app-secrets.json")
+                                  :extra-env {"VAULT_ADDR" vault-addr}}]
+                        (println "salut"))}
+         test {:doc "Test"
+               :task (let [services-str (repl/ofbiz-run "localhost" 7888 "(list-services)")
+                           res (first (repl/filter-values (deref repl/queue)))]
+                       (println (:value res)))}}}
