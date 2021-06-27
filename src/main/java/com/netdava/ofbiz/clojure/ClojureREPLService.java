@@ -30,11 +30,10 @@ public class ClojureREPLService {
       IFn start = Clojure.var("nrepl.server", "start-server");
 
       CONTEXT.put("ofbiz-dispatch-context", ctx);
-
       server = start.invoke(Clojure.read(":bind"), Clojure.read("\"localhost\""), Clojure.read(":port"),
           Clojure.read(port));
-      System.out.println("nrepl server started on port " + port);
-      Debug.logInfo("Started nRrepl " + port, MODULE);
+      // https://nrepl.org/nrepl/0.8/building_servers.html#basics
+      Debug.logInfo("nREPL server started on port " + port + " on host 127.0.0.1 - nrepl://127.0.0.1:" + port, MODULE);
     }
 
     return context;

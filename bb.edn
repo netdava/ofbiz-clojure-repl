@@ -19,13 +19,6 @@
                          (binding [*out* *err*]
                            (println args))
                          (apply shell args))
-                       (def ofbiz-ops-opts [["-p" "--port PORT" "App repl port."
-                                             :default 43851
-                                             :parse-fn (fn [p] (Integer/parseInt p))
-                                             :validate [(fn [p] (< 0 p 0x10000)) "Must be a number between 0 and 65536"]]
-                                            ["-H" "--host HOST" "App host."
-                                             :default "dev8.int.drevidence.com"]
-                                            ["-h" "--help" "Print help information."]])
                        (defn custom-parse-opts
                          [cli-args cli-opts]
                          (let [parsed-opts (parse-opts cli-args cli-opts)
@@ -41,14 +34,17 @@
                              (println "Allowed options are:\n" summary "\n")
                              (System/exit 0))
                            parsed-opts)))
-         ofbiz {:doc "Print hello ofbiz"
-                :task (let [parsed-opts (custom-parse-opts *command-line-args* ofbiz-ops-opts)
-                            {{:keys [env]} :options} parsed-opts
-                            opts {:out (str env "/app-secrets.json")
-                                  :extra-env {"VAULT_ADDR" vault-addr}}]
-                        (println "salut"))}
-         test {:doc "Test"
-               :task (let [services-str (repl/ofbiz-run "localhost" 7888 "(list-services)")
-                           q (deref repl/queue)
-                           res (repl/filter-values q)]
-                       (println (:value res)))}}}
+         list-services {:doc "List ofbiz services"
+                        :task (let [q (repl/ofbiz
+                                       "localhost" 7888
+                                       (repl/string-it (ofbiz-ops/list-services (fn [s] (clojure.string/includes? (.toLowerCase s) "test"))))
+                                       999)]
+                                (println (repl/first-response-value q 999)))}
+         get-model-service {:doc "Get the ModelService of a service"
+                            :task (let [expr-str (repl/string-it (ofbiz-ops/get-model-service "simpleMapListTest"))
+                                        q (repl/ofbiz "localhost" 7888 expr-str 999)]
+                                    (println (repl/first-response-value q 999)))}
+         run-service  {:doc "Run OFBiz service"
+                       :task (let [expr-str (repl/string-it (ofbiz-ops/run-sync "testScv" {"defaultValue" 123.45 "message" "Hello OFBiz from Clojure REPL"}))
+                                   q (repl/ofbiz "localhost" 7888 expr-str 999)]
+                               (println (repl/first-response-value q 999)))}}}

@@ -1,0 +1,153 @@
+= Clojure repl component for OFBiz
+
+Uses [nrepl](https://nrepl.org/nrepl/index.html) library to start an instance of nRepl inside Apache OFBiz.
+Once we have a Repl inside OFBiz we can interact with OFBiz remotely.
+It's basically a RPC (Remote Procedure Call) system with a programming language.
+
+Things you can do once connected to OFBiz repl:
+
+* More or less anything you could do via Java/Groovy code loaded in OFBiz
+** Interact with a running OFBiz instance from a shell like environment (Repl is more powerfull then the shell)
+* List services
+* Call services
+* Build an arsenal of admin scripts and manage OFBiz instance via repl like a boss via babashka
+
+
+More advanced things:
+* Prototype functionality and experiment with instant feedback - search for Repl driven development videos
+* Load new servicess dinamically ?!
+* Develop services for OFBiz in clojure and leverage all it's wonderfull properties
+* Use data visualization tools like [Proto-repl](https://github.com/jasongilman/proto-repl) to explore and do interactive Business Inteligence.
+* Design reports using real data using something like [Gorilla-repl](http://gorilla-repl.org/)
+
+Watch it on youtube https://youtu.be/XXxJDZRzu_E["Video of OFBiz Clojure repl"]
+
+I believe the OFBiz development experience can look like this:
+
+* https://www.youtube.com/watch?v=ZkJX9ciI5aM&t=1824s
+* https://www.youtube.com/watch?v=Bs44qdAX5yo
+
+== We can help you
+
+I am availble for contracting work via my company.
+I would love to work more with OFBiz in general and with Clojure on OFBiz in particular.
+If you do like this work plese let me know [contact@netdava.com](mailto:contact@netdava.com) .
+
+== How does it work?
+
+The plugin exposes services that allow a user to start/stop an instance of nRepl inside OFBiz application.
+
+You can find the plugin sources at [netdava/ofbiz-clojure-repl](https://github.com/netdava/ofbiz-clojure-repl) .
+
+== Using this plugin
+
+=== Usage from Web UI
+
+Clone Apache OFBiz trunk project as described in the online (https://OFBiz.apache.org/developers.html)[OFBiz Getting started] page.
+
+After that you need to clone this project inside `plugins` directory of OFBiz.
+
+Once that is done you can start the project.
+
+IMPORTANT: You will need to add clojars to OFBiz build.gradle. See https://issues.apache.org/jira/browse/OFBIZ-12263 and https://github.com/apache/ofbiz-framework/pull/304/files .
+
+[source,bash]
+----
+    # Build the project - download all dependencies
+    ./gradlew build
+    # Prepare OFBiz for start - load data
+    ./gradlew cleanAll loadAll
+    # Run OFBiz. You can look for the plugin in the logs.
+    ./gradlew ofbiz
+    # Open the link in the browser and start clojure repl manually.
+    xdg-open https://localhost:8443/accounting
+----
+
+The plugin comes with a container implementation that will start the repl out of the box.
+
+WARNING: Do not expose the repl port outside of localhost since it has no security.
+Anyone with repl access will be able to do *ANYTHING* to your OFBiz instance, including removing all your data.
+
+
+.OFBiz-clojure-repl container auto-starting logs
+[source,log]
+----
+2021-06-27 13:27:31,101 |OFBiz-JobQueue-0     |ClojureREPLService            |I| nRepl is not running
+2021-06-27 13:27:31,101 |OFBiz-JobQueue-1     |ClojureREPLService            |I| Starting nRrepl on port 7888
+2021-06-27 13:27:31,103 |OFBiz-JobQueue-0     |ServiceDispatcher             |T| Sync service [default/stopRepl] finished in [3] milliseconds
+2021-06-27 13:27:34,230 |OFBiz-JobQueue-1     |ClojureREPLService            |I| nREPL server started on port 7888 on host 127.0.0.1 - nrepl://127.0.0.1:7888
+----
+
+== Connecting to the repl and using it
+
+Once you have a running repl you can use it.
+
+There are two main ways:
+* Connect to repl from a babashka script - this is very good for DevOps management
+* Connect to repl from IDE (Calva, Spacemacs,etc) - good for developing, prototyping.
+
+=== Usage from babashka
+
+Babashka is a "Fast native Clojure scripting runtime" (bash gone clojure).
+Call clojure scripts with miliseconds startup time.
+
+There is support for link:https://babashka.org/[babashka] scripts - see `bb.edn` file and call `bb tasks` to see a list of tasks.
+
+.Calling `bb tasks` gets
+[source,bash]
+----
+  The following tasks are available:
+
+  list-services     List ofbiz services
+  get-model-service Get the ModelService of a service
+  run-service       Run OFBiz service
+----
+
+From the example scripts you can expand and build your own.
+
+=== Usage from Calva / Clojure IDE
+
+Just open your favorite Clojure IDE and connect to the repl, then explore OFBiz.
+You can use IntelliJ + Cursive or Visual Studio Code with Calva or whatever you wish.
+
+Load the code bellow and call some functions.
+
+.How to use plugin from Clojure
+[source,clojure]
+----
+(ns ofbiz-ops
+  (:require [clojure.string :as str])
+  (:import [com.netdava.ofbiz.clojure ClojureREPLService]
+           [org.apache.ofbiz.service DispatchContext]))
+
+(def ^DispatchContext dispatch-ctx (.get ClojureREPLService/CONTEXT "ofbiz-dispatch-context"))
+
+(defn list-services
+  "List ofbiz services.
+   Can be supplied with a filter function to filter services.
+
+   Example:
+   ;; filter services that contain 'repl' in their name
+   (ofbiz-ops/list-services (fn [s] (clojure.string/includes? (.toLowerCase s) \"repl\")))"
+  ([]
+   (.getAllServiceNames dispatch-ctx))
+  ([filter-fn]
+   (filter filter-fn (list-services))))
+
+(defn get-model-service
+  "Gets the ModelService instance that corresponds to given the name.
+
+   Example:
+   (ofbiz-ops/get-model-service \"startRepl\" )"
+
+  ([service]
+   (-> dispatch-ctx
+       (.getModelService service))))
+
+(defn run-sync
+  "Calls OFBiz service in sync mode."
+  [service ctx]
+  (-> dispatch-ctx
+      (.getDispatcher)
+      (.runSync service ctx)))
+----
