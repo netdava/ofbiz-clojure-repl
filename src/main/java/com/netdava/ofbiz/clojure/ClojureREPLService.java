@@ -15,13 +15,17 @@ public class ClojureREPLService {
   public static final String MODULE = ClojureREPLService.class.getName();
   public static final ConcurrentHashMap<String, Object> CONTEXT = new ConcurrentHashMap<>();
   public static String port = "7888";
-  private static final boolean isStarted = false;
+  private static boolean started = false;
   private static Object server = null;
+
+  public static boolean isStarted() {
+    return started;
+  }
 
   public synchronized static Map<String, ? extends Object> startRepl(DispatchContext ctx,
       Map<String, ? extends Object> context) {
 
-    if (isStarted) {
+    if (started) {
       Debug.logWarning("nRepl is already running on port " + port, MODULE);
     } else {
       Debug.logInfo("Starting nRrepl on port " + port, MODULE);
@@ -34,6 +38,7 @@ public class ClojureREPLService {
           Clojure.read(port));
       // https://nrepl.org/nrepl/0.8/building_servers.html#basics
       Debug.logInfo("nREPL server started on port " + port + " on host 127.0.0.1 - nrepl://127.0.0.1:" + port, MODULE);
+      started = true;
     }
 
     return context;
@@ -42,12 +47,13 @@ public class ClojureREPLService {
   public synchronized static Map<String, ? extends Object> stopRepl(DispatchContext ctx,
       Map<String, ? extends Object> context) {
 
-    if (isStarted) {
+    if (started) {
       Debug.logInfo("Stopping nRrepl on port " + port, MODULE);
       assert server != null;
       IFn stop = Clojure.var("nrepl.server", "stop-server");
       stop.invoke(server);
       Debug.logInfo("Stoppedn Rrepl " + port, MODULE);
+      started = false;
     } else {
       Debug.logInfo("nRepl is not running", MODULE);
     }
