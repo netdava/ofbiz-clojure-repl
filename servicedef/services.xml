@@ -40,5 +40,13 @@ under the License.
     </description>
   </service>
 
+  <service name="statusRepl" engine="java"
+    location="com.netdava.ofbiz.clojure.ClojureREPLService" invoke="statusRepl" export="true"
+    max-retry="3" use-transaction="false">
+    <description>
+      Clojure repl service. Get service stats.
+    </description>
+    <attribute name="status" type="java.util.Map" mode="OUT"/>
+  </service>
 
 </services>
