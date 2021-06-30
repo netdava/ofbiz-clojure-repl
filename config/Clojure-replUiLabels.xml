@@ -40,24 +40,24 @@ under the License.
         <value xml:lang="zh">不允许你浏览这个页面。</value>
         <value xml:lang="zh-TW">不允許您檢視這個頁面.</value>
     </property>
-    <property key="startRepl">
+    <property key="clojureReplstartRepl">
         <value xml:lang="en">Start repl</value>
         <value xml:lang="ro">Porneste repl</value>
     </property>
-    <property key="stopRepl">
+    <property key="clojureReplstopRepl">
         <value xml:lang="en">Stop repl</value>
         <value xml:lang="ro">Opreste repl</value>
     </property>
-    <property key="setReplPort">
+    <property key="clojureReplsetReplPort">
         <value xml:lang="en">Set repl port:</value>
         <value xml:lang="ro">Seteaza portul repl:</value>
     </property>
-    <property key="setReplHost">
+    <property key="clojureReplsetReplHost">
         <value xml:lang="en">Set repl host:</value>
         <value xml:lang="ro">Seteaza hostul la care repl sa asculte:</value>
     </property>
-    <property key="saveConfig">
-        <value xml:lang="en">Save config</value>
-        <value xml:lang="ro">Salveaza configurari</value>
+    <property key="clojureReplSave">
+        <value xml:lang="en">Save</value>
+        <value xml:lang="ro">Salveaza</value>
     </property>
 </resource>

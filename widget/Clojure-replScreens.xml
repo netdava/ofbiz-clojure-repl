@@ -20,7 +20,7 @@ under the License.
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
-    <screen name="main">
+    <screen name="clojureNrepl">
         <section>
             <actions>
                 <set field="headerItem" value="main" /> <!-- this highlights the selected menu-item with name "main" -->
@@ -32,7 +32,7 @@ under the License.
                             <include-form name="startRepl" location="component://clojure-repl/widget/Clojure-replForms.xml" />
                             <include-form name="stopRepl" location="component://clojure-repl/widget/Clojure-replForms.xml" />
                         </screenlet>
-                        <screenlet title="Set parameters">
+                        <screenlet title="Configuration">
                         <platform-specific>
                             <html><html-template location="component://clojure-repl/webapp/clojure-repl/crud/setParams.ftl"/></html>
                          </platform-specific>

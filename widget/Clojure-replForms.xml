@@ -21,12 +21,12 @@ under the License.
 <forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://ofbiz.apache.org/Widget-Form" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
         <form name="startRepl" type="single" target="startRepl">
-                <field name="submitButton" title="${uiLabelMap.startRepl}">
+                <field name="submitButton" title="${uiLabelMap.clojureReplstartRepl}">
                         <submit button-type="button" />
                 </field>
         </form>
         <form name="stopRepl" type="single" target="stopRepl">
-                <field name="submitButton" title="${uiLabelMap.stopRepl}">
+                <field name="submitButton" title="${uiLabelMap.clojureReplstopRepl}">
                         <submit button-type="button" />
                 </field>
         </form>
