@@ -34,7 +34,7 @@ under the License.
                         </screenlet>
                         <screenlet title="Configuration">
                         <platform-specific>
-                            <html><html-template location="component://clojure-repl/webapp/clojure-repl/crud/setParams.ftl"/></html>
+                            <html><html-template location="component://clojure-repl/webapp/clojure-repl/crud/configuration.ftl"/></html>
                          </platform-specific>
                         </screenlet>
                     </decorator-section>
