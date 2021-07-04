@@ -18,24 +18,30 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Screen"
+         xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <screen name="main">
         <section>
             <actions>
-                <set field="headerItem" value="main" /> <!-- this highlights the selected menu-item with name "main" -->
+                <set field="headerItem" value="main"/> <!-- this highlights the selected menu-item with name "main" -->
             </actions>
             <widgets>
                 <decorator-screen name="Clojure-replCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <screenlet title="Take controll of your REPL">
-                            <include-form name="startRepl" location="component://clojure-repl/widget/Clojure-replForms.xml" />
-                            <include-form name="stopRepl" location="component://clojure-repl/widget/Clojure-replForms.xml" />
+                            <include-form name="startRepl"
+                                          location="component://clojure-repl/widget/Clojure-replForms.xml"/>
+                            <include-form name="stopRepl"
+                                          location="component://clojure-repl/widget/Clojure-replForms.xml"/>
                         </screenlet>
                         <screenlet title="Configuration">
-                        <platform-specific>
-                            <html><html-template location="component://clojure-repl/webapp/clojure-repl/crud/configuration.ftl"/></html>
-                         </platform-specific>
+                            <platform-specific>
+                                <html>
+                                    <html-template
+                                            location="component://clojure-repl/webapp/clojure-repl/crud/configuration.ftl"/>
+                                </html>
+                            </platform-specific>
                         </screenlet>
                     </decorator-section>
                 </decorator-screen>
