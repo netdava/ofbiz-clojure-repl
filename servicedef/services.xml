@@ -49,4 +49,13 @@ under the License.
     <attribute name="status" type="java.util.Map" mode="OUT"/>
   </service>
 
+  <service name="com.netdava.ofbiz.clojure.sample/clojure-test-service" engine="clojure"
+           location="com.netdava.ofbiz.clojure.sample" invoke="clojure-test-service" export="true"
+           max-retry="3" use-transaction="false">
+    <description>
+      Clojure repl service. Get service stats.
+    </description>
+    <attribute name="status" type="java.util.Map" mode="OUT"/>
+  </service>
+
 </services>

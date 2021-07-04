@@ -25,6 +25,7 @@ under the License.
         <section>
             <actions>
                 <set field="headerItem" value="main"/> <!-- this highlights the selected menu-item with name "main" -->
+                <script location="component://clojure-repl/groovyScripts/ClojureReplConfiguration.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="Clojure-replCommonDecorator" location="${parameters.mainDecoratorLocation}">

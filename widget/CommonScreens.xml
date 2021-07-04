@@ -37,7 +37,6 @@ under the License.
                 <set field="applicationMenuLocation" value="component://clojure-repl/widget/Clojure-replMenus.xml"
                      global="true"/>
                 <set field="applicationTitle" from-field="uiLabelMap.Clojure-replApplication" global="true"/>
-
             </actions>
             <widgets>
                 <include-screen name="GlobalDecorator" location="component://common/widget/CommonScreens.xml"/>

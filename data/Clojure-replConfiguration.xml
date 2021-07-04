@@ -19,7 +19,10 @@ under the License.
 -->
 
 <entity-engine-xml>
-<SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.port" systemPropertyValue="7888" description="Repl port"/>
-<SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.host" systemPropertyValue="localhost" description="The host where repl listens to"/>
-<SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.enabled" systemPropertyValue="true" description="Plugin status"/>
+    <SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.port" systemPropertyValue="7888"
+                    description="Repl port"/>
+    <SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.host" systemPropertyValue="localhost"
+                    description="The host where repl listens to"/>
+    <SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.enabled" systemPropertyValue="true"
+                    description="Plugin status"/>
 </entity-engine-xml>
