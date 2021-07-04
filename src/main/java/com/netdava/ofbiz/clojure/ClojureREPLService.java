@@ -68,7 +68,7 @@ public class ClojureREPLService {
             Object s = server.get();
             stop.invoke(s);
             server = Optional.empty();
-            Debug.logInfo("Stoppedn Rrepl " + PORT, MODULE);
+            Debug.logInfo("Stopped nRepl " + PORT, MODULE);
         } else {
             Debug.logInfo("nRepl is not running", MODULE);
         }
