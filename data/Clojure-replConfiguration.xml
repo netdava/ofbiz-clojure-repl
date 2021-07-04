@@ -23,6 +23,6 @@ under the License.
                     description="Repl port"/>
     <SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.host" systemPropertyValue="localhost"
                     description="The host where repl listens to"/>
-    <SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.enabled" systemPropertyValue="true"
-                    description="Plugin status"/>
+    <SystemProperty systemResourceId="clojureRepl" systemPropertyId="clojure.repl.autostart" systemPropertyValue="true"
+                    description="Whether to start the REPL with OFBiz"/>
 </entity-engine-xml>
