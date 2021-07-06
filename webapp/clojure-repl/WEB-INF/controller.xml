@@ -44,12 +44,17 @@ under the License.
     <request-map uri="startRepl">
         <security https="true" auth="true" />
         <event type="service" invoke="startRepl" />
-        <response name="success" type="view" value="main" />
+        <response name="success" type="view" value="startRepl" />
     </request-map>
     <request-map uri="stopRepl">
         <security https="true" auth="true" />
         <event type="service" invoke="stopRepl" />
-        <response name="success" type="view" value="main" />
+        <response name="success" type="view" value="stopRepl" />
+    </request-map>
+    <request-map uri="statusRepl">
+        <security https="true" auth="true" />
+        <event type="service" invoke="statusRepl" />
+        <response name="success" type="view" value="statusRepl" />
     </request-map>
     
     <!-- View Mappings -->

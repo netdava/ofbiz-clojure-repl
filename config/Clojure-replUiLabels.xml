@@ -40,24 +40,40 @@ under the License.
         <value xml:lang="zh">不允许你浏览这个页面。</value>
         <value xml:lang="zh-TW">不允許您檢視這個頁面.</value>
     </property>
-    <property key="@component-resource-name@clojureReplstartRepl">
+    <property key="@component-resource-name@StartRepl">
         <value xml:lang="en">Start repl</value>
         <value xml:lang="ro">Porneste repl</value>
     </property>
-    <property key="@component-resource-name@clojureReplstopRepl">
+    <property key="@component-resource-name@StopRepl">
         <value xml:lang="en">Stop repl</value>
         <value xml:lang="ro">Opreste repl</value>
     </property>
-    <property key="@component-resource-name@clojureReplsetReplPort">
+    <property key="@component-resource-name@SetReplPort">
         <value xml:lang="en">Set repl port:</value>
         <value xml:lang="ro">Seteaza portul repl:</value>
     </property>
-    <property key="@component-resource-name@clojureReplsetReplHost">
+    <property key="@component-resource-name@SetReplHost">
         <value xml:lang="en">Set repl host:</value>
         <value xml:lang="ro">Seteaza hostul la care repl sa asculte:</value>
     </property>
-    <property key="@component-resource-name@clojureReplSave">
+    <property key="@component-resource-name@Save">
         <value xml:lang="en">Save</value>
         <value xml:lang="ro">Salveaza</value>
+    </property>
+    <property key="@component-resource-name@CurrentConfig">
+        <value xml:lang="en">Current repl config is:</value>
+        <value xml:lang="ro">Configurări curente repl:</value>
+    </property>
+    <property key="@component-resource-name@StartWithOFBiz">
+        <value xml:lang="en">Start repl with OFBiz:</value>
+        <value xml:lang="ro">Repl porneste cu OFBIZ:</value>
+    </property>
+    <property key="@component-resource-name@HostAddress">
+        <value xml:lang="en">Host address:</value>
+        <value xml:lang="ro">Adresa host:</value>
+    </property>
+    <property key="@component-resource-name@RunOnPort">
+        <value xml:lang="en">Running on port:</value>
+        <value xml:lang="ro">Portul pe care rulează:</value>
     </property>
 </resource>
