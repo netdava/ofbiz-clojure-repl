@@ -1,18 +1,16 @@
-package com.netdava.ofbiz.clojure;
+package org.apache.ofbiz.clojure;
 
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
 import clojure.lang.Keyword;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.entity.GenericEntityException;
-import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.service.DispatchContext;
 
 import java.net.ServerSocket;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -62,7 +60,7 @@ public class ClojureREPLService {
             IFn start = Clojure.var("nrepl.server", "start-server");
 
             CONTEXT.put("ofbiz-dispatch-context", ctx);
-            Map s = (Map) start
+            Map<Object,Object> s = (Map<Object,Object>) start
                     .invoke(Clojure.read(":bind"), host, Clojure.read(":port"),
                             Clojure.read(port));
             server = Optional.of(s);
@@ -77,9 +75,9 @@ public class ClojureREPLService {
 
     public static Map<String, String> replConfigMapFromDb(DispatchContext ctx) throws GenericEntityException {
         Map<String, String> configs = EntityQuery.use(ctx.getDelegator()).from("SystemProperty").where(
-                new HashMap<String, String>() {{
-                    put("systemResourceId", "clojureRepl");
-                }}).queryList()
+                        new HashMap<String, String>() {{
+                            put("systemResourceId", "clojureRepl");
+                        }}).queryList()
                 .stream()
                 .collect(Collectors.toMap((gv) -> (String) gv.get("systemPropertyId"),
                         (gv) -> (String) gv.get("systemPropertyValue")));

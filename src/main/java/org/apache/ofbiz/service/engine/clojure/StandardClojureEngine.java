@@ -1,4 +1,4 @@
-package com.netdava.ofbiz.clojure;
+package org.apache.ofbiz.service.engine.clojure;
 
 import clojure.java.api.Clojure;
 import clojure.lang.IFn;
@@ -16,11 +16,11 @@ import java.util.Map;
 /**
  * Clojure service engine. Enables OFBiz services written in Clojure.
  */
-public class ClojureEngine extends GenericAsyncEngine {
+public class StandardClojureEngine extends GenericAsyncEngine {
 
-    private static final String MODULE = ClojureEngine.class.getName();
+    private static final String MODULE = StandardClojureEngine.class.getName();
 
-    public ClojureEngine(ServiceDispatcher dispatcher) {
+    public StandardClojureEngine(ServiceDispatcher dispatcher) {
         super(dispatcher);
         Debug.logInfo("Created Clojure engine.", MODULE);
     }

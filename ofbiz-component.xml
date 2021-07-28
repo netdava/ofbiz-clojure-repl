@@ -52,6 +52,6 @@ under the License.
         base-permission="OFBTOOLS,CLOJURE-REPL"
         mount-point="/clojure-repl"/>
 
-    <container name="clojure-REPL" class="com.netdava.ofbiz.clojure.ClojureREPLContainer" loaders="main"/>
+    <container name="clojure-REPL" class="org.apache.ofbiz.clojure.ClojureREPLContainer" loaders="main"/>
 
 </ofbiz-component>

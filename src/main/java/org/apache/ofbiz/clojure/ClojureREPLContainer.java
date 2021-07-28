@@ -1,4 +1,4 @@
-package com.netdava.ofbiz.clojure;
+package org.apache.ofbiz.clojure;
 
 import java.util.Collections;
 import java.util.List;

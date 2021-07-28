@@ -1,4 +1,4 @@
-(ns com.netdava.ofbiz.clojure.sample
+(ns org.apache.ofbiz.clojure.sample
   (:gen-class)
   (:import org.apache.ofbiz.service.DispatchContext))
 

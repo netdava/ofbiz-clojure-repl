@@ -10,7 +10,7 @@
 ;; Run forms: move carret on line `(.getAllServis ...` and ctrl+enter
 
 (ns demo
-  (:import [com.netdava.ofbiz.clojure ClojureREPLService]
+  (:import [org.apache.ofbiz.clojure ClojureREPLService]
            [org.apache.ofbiz.service DispatchContext]))
 
 (def ^DispatchContext ofbiz (.get ClojureREPLService/CONTEXT "ofbiz-dispatch-context"))

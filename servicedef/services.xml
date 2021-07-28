@@ -25,7 +25,7 @@ under the License.
   <version>1.0</version>
 
   <service name="startRepl" engine="java"
-    location="com.netdava.ofbiz.clojure.ClojureREPLService" invoke="startRepl" export="true"
+    location="org.apache.ofbiz.clojure.ClojureREPLService" invoke="startRepl" export="true"
     max-retry="3" use-transaction="false">
     <description>
       Clojure repl service. Starts the repl to listen to a port
@@ -33,7 +33,7 @@ under the License.
   </service>
 
   <service name="stopRepl" engine="java"
-    location="com.netdava.ofbiz.clojure.ClojureREPLService" invoke="stopRepl" export="true"
+    location="org.apache.ofbiz.clojure.ClojureREPLService" invoke="stopRepl" export="true"
     max-retry="3" use-transaction="false">
     <description>
       Clojure repl service. Controls the repl stops the repl.
@@ -41,7 +41,7 @@ under the License.
   </service>
 
   <service name="statusRepl" engine="java"
-    location="com.netdava.ofbiz.clojure.ClojureREPLService" invoke="statusRepl" export="true"
+    location="org.apache.ofbiz.clojure.ClojureREPLService" invoke="statusRepl" export="true"
     max-retry="3" use-transaction="false">
     <description>
       Clojure repl service. Get service stats.
@@ -49,8 +49,8 @@ under the License.
     <attribute name="status" type="java.util.Map" mode="OUT"/>
   </service>
 
-  <service name="com.netdava.ofbiz.clojure.sample/clojure-test-service" engine="clojure"
-           location="com.netdava.ofbiz.clojure.sample" invoke="clojure-test-service" export="true"
+  <service name="org.apache.ofbiz.clojure.sample/clojure-test-service" engine="clojure"
+           location="org.apache.ofbiz.clojure.sample" invoke="clojure-test-service" export="true"
            max-retry="3" use-transaction="false">
     <description>
       Clojure repl service. Get service stats.

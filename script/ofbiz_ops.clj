@@ -1,6 +1,6 @@
 (ns ofbiz-ops
   (:require [clojure.string :as str])
-  (:import [com.netdava.ofbiz.clojure ClojureREPLService]
+  (:import [org.apache.ofbiz.clojure ClojureREPLService]
            [org.apache.ofbiz.service DispatchContext]))
 
 (def ^DispatchContext dispatch-ctx (.get ClojureREPLService/CONTEXT "ofbiz-dispatch-context"))
