@@ -19,8 +19,8 @@
 
 dependencies {
     //Examples of compile-time and runtime dependencies
-    pluginLibsCompile 'org.clojure:clojure:1.10.2'
-    pluginLibsCompile 'nrepl:nrepl:0.8.3'
+    pluginLibsCompile 'org.clojure:clojure:1.11.1'
+    pluginLibsCompile 'nrepl:nrepl:1.1.0'
     //pluginLibsCompile 'junit:junit-dep:4.10'
     //pluginLibsRuntime 'junit:junit-dep:4.10'
 }
